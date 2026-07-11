@@ -108,10 +108,11 @@ export function ContactBlock() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Contact form */}
-        <div className="rounded-3xl bg-card border border-border p-8 md:p-12 shadow-elegant">
+        <Reveal delay={140} className="rounded-3xl bg-card border border-border p-8 md:p-12 shadow-elegant card-glow">
+
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Get in touch</span>
           <h3 className="mt-3 font-display text-3xl md:text-4xl font-semibold text-primary text-balance">
             Have a question? We'd love to help.
