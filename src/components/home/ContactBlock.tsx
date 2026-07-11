@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { CheckCircle2, Mail, MapPin, Phone } from "lucide-react";
 import { z } from "zod";
+import { Reveal } from "./Reveal";
+
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
@@ -40,8 +42,9 @@ export function ContactBlock() {
     <section id="contact" className="py-24 md:py-32">
       <div className="container-page grid lg:grid-cols-[0.9fr_1.1fr] gap-10">
         {/* Newsletter + info */}
-        <div className="flex flex-col gap-8">
-          <div className="rounded-3xl bg-gradient-primary text-primary-foreground p-8 md:p-10 shadow-elegant">
+        <Reveal className="flex flex-col gap-8">
+          <div className="rounded-3xl bg-gradient-primary text-primary-foreground p-8 md:p-10 shadow-elegant card-glow">
+
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Newsletter</span>
             <h3 className="mt-3 font-display text-3xl font-semibold text-balance">
               Get school updates, events & stories.
@@ -105,10 +108,11 @@ export function ContactBlock() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Contact form */}
-        <div className="rounded-3xl bg-card border border-border p-8 md:p-12 shadow-elegant">
+        <Reveal delay={140} className="rounded-3xl bg-card border border-border p-8 md:p-12 shadow-elegant card-glow">
+
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Get in touch</span>
           <h3 className="mt-3 font-display text-3xl md:text-4xl font-semibold text-primary text-balance">
             Have a question? We'd love to help.
@@ -145,7 +149,8 @@ export function ContactBlock() {
               </div>
             )}
           </form>
-        </div>
+        </Reveal>
+
       </div>
     </section>
   );

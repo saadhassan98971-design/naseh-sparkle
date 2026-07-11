@@ -1,4 +1,5 @@
 import { Quote, Star } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const QUOTES = [
   {
@@ -23,28 +24,30 @@ export function Testimonials() {
     <section className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden">
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_60%_at_10%_0%,color-mix(in_oklab,var(--color-gold)_18%,transparent),transparent_70%)]" />
       <div className="container-page relative">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <Reveal className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Parent Voices</span>
           <h2 className="mt-3 font-display text-4xl md:text-5xl font-semibold text-balance">
             Trusted by families across Lalamusa
           </h2>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {QUOTES.map((q) => (
-            <figure key={q.name} className="rounded-3xl bg-primary-foreground/5 backdrop-blur border border-primary-foreground/10 p-8 flex flex-col hover:bg-primary-foreground/10 transition-colors">
-              <Quote className="h-8 w-8 text-gold" />
-              <blockquote className="mt-4 text-lg leading-relaxed text-primary-foreground/95 flex-1">
-                "{q.quote}"
-              </blockquote>
-              <div className="mt-6 flex items-center gap-1 text-gold">
-                {[0,1,2,3,4].map(i => <Star key={i} className="h-4 w-4 fill-current" />)}
-              </div>
-              <figcaption className="mt-4 pt-4 border-t border-primary-foreground/15">
-                <div className="font-display text-lg font-semibold">{q.name}</div>
-                <div className="text-sm text-primary-foreground/70">{q.role}</div>
-              </figcaption>
-            </figure>
+          {QUOTES.map((q, i) => (
+            <Reveal key={q.name} delay={i * 140}>
+              <figure className="card-glow rounded-3xl bg-primary-foreground/5 backdrop-blur border border-primary-foreground/10 p-8 flex flex-col hover:bg-primary-foreground/10 transition-colors h-full">
+                <Quote className="h-8 w-8 text-gold" />
+                <blockquote className="mt-4 text-lg leading-relaxed text-primary-foreground/95 flex-1">
+                  "{q.quote}"
+                </blockquote>
+                <div className="mt-6 flex items-center gap-1 text-gold">
+                  {[0,1,2,3,4].map(i => <Star key={i} className="h-4 w-4 fill-current" />)}
+                </div>
+                <figcaption className="mt-4 pt-4 border-t border-primary-foreground/15">
+                  <div className="font-display text-lg font-semibold">{q.name}</div>
+                  <div className="text-sm text-primary-foreground/70">{q.role}</div>
+                </figcaption>
+              </figure>
+            </Reveal>
           ))}
         </div>
       </div>
