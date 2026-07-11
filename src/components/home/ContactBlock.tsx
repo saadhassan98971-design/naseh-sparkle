@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { CheckCircle2, Mail, MapPin, Phone } from "lucide-react";
 import { z } from "zod";
+import { Reveal } from "./Reveal";
+
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(80),
