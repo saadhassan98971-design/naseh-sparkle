@@ -149,7 +149,8 @@ export function ContactBlock() {
               </div>
             )}
           </form>
-        </div>
+        </Reveal>
+
       </div>
     </section>
   );
