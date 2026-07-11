@@ -34,26 +34,46 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
   );
 }
 
+function StatItem({ Icon, value, suffix, label, delay }: { Icon: typeof Award; value: number; suffix: string; label: string; delay: number }) {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className={`text-center lg:text-left flex flex-col items-center lg:items-start ${visible ? "animate-pop" : "opacity-0"}`}
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary-foreground/10 text-gold mb-3">
+        <Icon className="h-5 w-5" />
+      </span>
+      <div className="text-primary-foreground">
+        <Counter target={value} suffix={suffix} />
+      </div>
+      <div className="mt-1.5 text-sm text-primary-foreground/70 tracking-wide">
+        {label}
+      </div>
+    </div>
+  );
+}
+
 export function Stats() {
   return (
     <section className="relative">
       <div className="container-page">
-        <div className="rounded-3xl bg-primary text-primary-foreground shadow-elegant px-6 md:px-10 py-10 md:py-14 grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
-          {STATS.map(({ icon: Icon, value, suffix, label }) => (
-            <div key={label} className="text-center lg:text-left flex flex-col items-center lg:items-start">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary-foreground/10 text-gold mb-3">
-                <Icon className="h-5 w-5" />
-              </span>
-              <div className="text-primary-foreground">
-                <Counter target={value} suffix={suffix} />
-              </div>
-              <div className="mt-1.5 text-sm text-primary-foreground/70 tracking-wide">
-                {label}
-              </div>
-            </div>
+        <div className="rounded-3xl bg-primary text-primary-foreground shadow-elegant px-6 md:px-10 py-10 md:py-14 grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 relative overflow-hidden">
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-40 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(50% 80% at 100% 0%, color-mix(in oklab, var(--color-gold) 25%, transparent), transparent 60%)",
+            }}
+          />
+          {STATS.map(({ icon, value, suffix, label }, i) => (
+            <StatItem key={label} Icon={icon} value={value} suffix={suffix} label={label} delay={i * 120} />
           ))}
         </div>
       </div>
     </section>
   );
 }
+
