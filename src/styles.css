@@ -166,3 +166,156 @@
 @utility animate-fade-in {
   animation: fade-in 0.8s ease-out both;
 }
+
+/* ---------- Scroll reveal ---------- */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+@utility is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Aurora / mesh background ---------- */
+@keyframes aurora-shift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(4%, -3%, 0) scale(1.08); }
+  66% { transform: translate3d(-3%, 4%, 0) scale(0.96); }
+}
+@utility aurora {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(35% 40% at 20% 30%, color-mix(in oklab, var(--color-gold) 35%, transparent), transparent 60%),
+    radial-gradient(30% 35% at 80% 20%, color-mix(in oklab, var(--color-primary) 30%, transparent), transparent 65%),
+    radial-gradient(40% 40% at 60% 80%, color-mix(in oklab, var(--color-terracotta) 22%, transparent), transparent 60%),
+    radial-gradient(30% 30% at 10% 80%, color-mix(in oklab, var(--color-primary-soft) 28%, transparent), transparent 65%);
+  filter: blur(40px);
+  animation: aurora-shift 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ---------- Drifting blobs ---------- */
+@keyframes blob-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(3%, -4%, 0) scale(1.1); }
+}
+@utility blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.55;
+  pointer-events: none;
+  animation: blob-drift 14s ease-in-out infinite;
+}
+
+/* ---------- Card glow (gradient border on hover) ---------- */
+@utility card-glow {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--color-gold) 90%, transparent),
+      color-mix(in oklab, var(--color-terracotta) 80%, transparent),
+      color-mix(in oklab, var(--color-primary-soft) 80%, transparent)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    border-radius: inherit;
+    background: radial-gradient(
+      60% 60% at 50% 50%,
+      color-mix(in oklab, var(--color-gold) 22%, transparent),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+/* ---------- Animated gradient text ---------- */
+@keyframes gradient-pan {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@utility text-shimmer {
+  background: linear-gradient(
+    100deg,
+    var(--color-gold) 0%,
+    var(--color-terracotta) 40%,
+    var(--color-gold) 60%,
+    var(--color-terracotta) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  animation: gradient-pan 6s ease-in-out infinite;
+}
+
+/* ---------- Pop-in scale ---------- */
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.85); }
+  60% { transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@utility animate-pop {
+  animation: pop-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ---------- Staggered hero entrance ---------- */
+@utility hero-stagger {
+  & > * {
+    opacity: 0;
+    animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  & > *:nth-child(1) { animation-delay: 0.05s; }
+  & > *:nth-child(2) { animation-delay: 0.2s; }
+  & > *:nth-child(3) { animation-delay: 0.35s; }
+  & > *:nth-child(4) { animation-delay: 0.5s; }
+  & > *:nth-child(5) { animation-delay: 0.65s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .aurora,
+  .blob,
+  .text-shimmer,
+  .animate-pop,
+  .animate-fade-up,
+  .animate-fade-in {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
