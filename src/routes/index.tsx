@@ -1,24 +1,54 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/home/Header";
+import { Hero } from "@/components/home/Hero";
+import { Stats } from "@/components/home/Stats";
+import { About } from "@/components/home/About";
+import { News } from "@/components/home/News";
+import { Classes } from "@/components/home/Classes";
+import { Testimonials } from "@/components/home/Testimonials";
+import { WhyChooseUs } from "@/components/home/WhyChooseUs";
+import { Blog } from "@/components/home/Blog";
+import { ContactBlock } from "@/components/home/ContactBlock";
+import { Footer } from "@/components/home/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Naveed-e-Sahar School · Lalamusa | K–12 Education Since 1999" },
+      {
+        name: "description",
+        content:
+          "A leading K–12 private school in Lalamusa, Pakistan. 25+ years of academic excellence, holistic learning, and character-driven education. Affiliated with BISE Gujranwala.",
+      },
+      { property: "og:title", content: "Naveed-e-Sahar School · Lalamusa" },
+      {
+        property: "og:description",
+        content:
+          "Empowering the next generation of leaders through holistic K–12 education in Lalamusa, Pakistan.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <Hero />
+        <Stats />
+        <About />
+        <News />
+        <Classes />
+        <Testimonials />
+        <WhyChooseUs />
+        <Blog />
+        <ContactBlock />
+      </main>
+      <Footer />
     </div>
   );
 }
