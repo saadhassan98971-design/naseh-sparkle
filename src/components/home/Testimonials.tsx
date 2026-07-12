@@ -36,7 +36,7 @@ export function Testimonials() {
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {QUOTES.map((q, i) => (
             <Reveal key={q.name} delay={i * 140}>
-              <figure className="card-glow rounded-3xl bg-primary-foreground/5 backdrop-blur border border-primary-foreground/10 p-8 flex flex-col hover:bg-primary-foreground/10 transition-colors h-full">
+              <figure className="tilt-hover card-glow rounded-3xl bg-primary-foreground/5 backdrop-blur border border-primary-foreground/10 p-8 flex flex-col hover:bg-primary-foreground/10 h-full">
                 <Quote className="h-8 w-8 text-gold" />
                 <blockquote className="mt-4 text-lg leading-relaxed text-primary-foreground/95 flex-1">
                   "{q.quote}"

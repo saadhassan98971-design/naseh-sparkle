@@ -22,11 +22,13 @@ function Bar({ label, value, delay }: { label: string; value: number; delay: num
           {value}%
         </span>
       </div>
-      <div className="h-2.5 rounded-full bg-muted overflow-hidden">
+      <div className="relative h-2.5 rounded-full bg-muted overflow-hidden">
         <div
-          className="h-full rounded-full bg-gradient-warm transition-[width] duration-[1600ms] ease-out"
+          className="h-full rounded-full bg-gradient-warm transition-[width] duration-[1600ms] ease-out relative overflow-hidden"
           style={{ width: visible ? `${value}%` : "0%", transitionDelay: `${delay}ms` }}
-        />
+        >
+          {visible && <span className="progress-sheen" style={{ animationDelay: `${delay + 800}ms` }} />}
+        </div>
       </div>
     </div>
   );
