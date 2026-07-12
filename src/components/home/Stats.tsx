@@ -42,7 +42,7 @@ function StatItem({ Icon, value, suffix, label, delay }: { Icon: typeof Award; v
       className={`text-center lg:text-left flex flex-col items-center lg:items-start ${visible ? "animate-pop" : "opacity-0"}`}
       style={{ animationDelay: `${delay}ms` }}
     >
-      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary-foreground/10 text-gold mb-3">
+      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary-foreground/10 text-gold mb-3 icon-pulse">
         <Icon className="h-5 w-5" />
       </span>
       <div className="text-primary-foreground">
@@ -59,7 +59,7 @@ export function Stats() {
   return (
     <section className="relative">
       <div className="container-page">
-        <div className="rounded-3xl bg-primary text-primary-foreground shadow-elegant px-6 md:px-10 py-10 md:py-14 grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 relative overflow-hidden">
+        <div className="stats-gradient rounded-3xl text-primary-foreground shadow-elegant px-6 md:px-10 py-10 md:py-14 grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 relative overflow-hidden">
           <div
             aria-hidden
             className="absolute inset-0 opacity-40 pointer-events-none"

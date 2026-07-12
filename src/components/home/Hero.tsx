@@ -73,6 +73,30 @@ export function Hero() {
         }}
       />
 
+      {/* Sparkle field */}
+      <div aria-hidden className="sparkle-field -z-10">
+        {Array.from({ length: 22 }).map((_, i) => {
+          const left = (i * 37) % 100;
+          const top = (i * 53) % 90;
+          const delay = (i % 8) * 0.45;
+          const dur = 3 + (i % 5);
+          const size = 2 + (i % 4);
+          return (
+            <span
+              key={i}
+              style={{
+                left: `${left}%`,
+                top: `${top}%`,
+                width: size,
+                height: size,
+                animationDelay: `${delay}s, ${delay * 0.7}s`,
+                animationDuration: `${dur}s, ${10 + (i % 6)}s`,
+              }}
+            />
+          );
+        })}
+      </div>
+
       <div className="container-page grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center pt-14 pb-20 md:pt-20 md:pb-28">
         <div className="hero-stagger">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3.5 py-1.5 text-xs font-medium tracking-wide uppercase text-primary">
@@ -100,8 +124,8 @@ export function Hero() {
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
-              href="#admissions"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-elegant hover:-translate-y-0.5 transition-all"
+              href="#contact"
+              className="cta-glow group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-elegant hover:-translate-y-0.5 transition-all"
             >
               Admissions
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

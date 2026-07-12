@@ -304,6 +304,129 @@
   & > *:nth-child(5) { animation-delay: 0.65s; }
 }
 
+/* ---------- Scroll anchor offset for sticky header ---------- */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* ---------- CTA animated glow ---------- */
+@keyframes cta-glow-pan {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@utility cta-glow {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      120deg,
+      color-mix(in oklab, var(--color-gold) 90%, transparent),
+      color-mix(in oklab, var(--color-primary-soft) 80%, transparent),
+      color-mix(in oklab, var(--color-terracotta) 85%, transparent),
+      color-mix(in oklab, var(--color-gold) 90%, transparent)
+    );
+    background-size: 300% 100%;
+    animation: cta-glow-pan 5s ease-in-out infinite;
+    filter: blur(10px);
+    opacity: 0.55;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  &:hover::before {
+    opacity: 0.9;
+  }
+}
+
+/* ---------- Progress bar shimmer sheen ---------- */
+@keyframes progress-sheen {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+@utility progress-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 80%
+  );
+  animation: progress-sheen 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ---------- Slow floating parallax ---------- */
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -18px, 0); }
+}
+@utility float-slow {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+/* ---------- Sparkle field ---------- */
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1); }
+}
+@keyframes sparkle-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(0, -60px, 0); }
+}
+@utility sparkle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  & > span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--color-gold) 85%, white);
+    box-shadow: 0 0 8px color-mix(in oklab, var(--color-gold) 60%, transparent);
+    animation: sparkle-twinkle 3.6s ease-in-out infinite, sparkle-drift 14s linear infinite;
+    opacity: 0;
+  }
+}
+
+/* ---------- Stats gradient background drift ---------- */
+@keyframes stats-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@utility stats-gradient {
+  background: linear-gradient(
+    120deg,
+    var(--color-primary) 0%,
+    color-mix(in oklab, var(--color-primary) 70%, var(--color-primary-soft)) 50%,
+    var(--color-primary) 100%
+  );
+  background-size: 200% 100%;
+  animation: stats-shift 12s ease-in-out infinite;
+}
+
+/* ---------- Icon glow pulse ---------- */
+@keyframes icon-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-gold) 40%, transparent); }
+  50% { box-shadow: 0 0 0 10px color-mix(in oklab, var(--color-gold) 0%, transparent); }
+}
+@utility icon-pulse {
+  animation: icon-pulse 2.8s ease-out infinite;
+}
+
+/* ---------- Tilt hover ---------- */
+@utility tilt-hover {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  &:hover {
+    transform: perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-4px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .aurora,
@@ -311,11 +434,19 @@
   .text-shimmer,
   .animate-pop,
   .animate-fade-up,
-  .animate-fade-in {
+  .animate-fade-in,
+  .float-slow,
+  .sparkle-field > span,
+  .stats-gradient,
+  .cta-glow::before,
+  .progress-sheen,
+  .icon-pulse,
+  .tilt-hover {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 }
+
 
