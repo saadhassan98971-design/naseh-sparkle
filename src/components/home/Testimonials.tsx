@@ -21,8 +21,10 @@ const QUOTES = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden">
+    <section id="testimonials" className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden">
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_60%_at_10%_0%,color-mix(in_oklab,var(--color-gold)_18%,transparent),transparent_70%)]" />
+      <div aria-hidden className="blob float-slow" style={{ width: 340, height: 340, top: "-80px", right: "-120px", background: "radial-gradient(circle, color-mix(in oklab, var(--color-gold) 45%, transparent), transparent 70%)" }} />
+      <div aria-hidden className="blob float-slow" style={{ width: 300, height: 300, bottom: "-100px", left: "-80px", background: "radial-gradient(circle, color-mix(in oklab, var(--color-terracotta) 35%, transparent), transparent 70%)", animationDelay: "-5s" }} />
       <div className="container-page relative">
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Parent Voices</span>

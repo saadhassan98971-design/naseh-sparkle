@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useSmoothAnchors } from "@/lib/smooth-scroll";
 import { Header } from "@/components/home/Header";
 import { Hero } from "@/components/home/Hero";
 import { Stats } from "@/components/home/Stats";
@@ -50,6 +51,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useSmoothAnchors();
   return (
     <div className="min-h-screen bg-background">
       <Header />

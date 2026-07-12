@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { Menu, X, GraduationCap } from "lucide-react";
 
-const NAV = ["Home", "About", "Media", "Alumni", "Careers", "Blogs", "Contact"];
+const NAV: { label: string; href: string }[] = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Media", href: "#media" },
+  { label: "Alumni", href: "#testimonials" },
+  { label: "Classes", href: "#classes" },
+  { label: "Blogs", href: "#blogs" },
+  { label: "Contact", href: "#contact" },
+];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,19 +48,19 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-1">
           {NAV.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               className="px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary rounded-md transition-colors"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </nav>
 
         <div className="hidden lg:block">
           <a
-            href="#admissions"
-            className="inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-soft hover:bg-primary/90 hover:-translate-y-0.5 transition-all"
+            href="#contact"
+            className="cta-glow inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-soft hover:bg-primary/90 hover:-translate-y-0.5 transition-all"
           >
             Apply Now
           </a>
@@ -72,16 +80,16 @@ export function Header() {
           <div className="container-page py-4 flex flex-col gap-1">
             {NAV.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 onClick={() => setOpen(false)}
                 className="px-3 py-2.5 text-sm font-medium rounded-md hover:bg-muted"
               >
-                {item}
+                {item.label}
               </a>
             ))}
             <a
-              href="#admissions"
+              href="#contact"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
             >

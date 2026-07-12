@@ -100,8 +100,8 @@ export function Hero() {
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
-              href="#admissions"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-elegant hover:-translate-y-0.5 transition-all"
+              href="#contact"
+              className="cta-glow group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-elegant hover:-translate-y-0.5 transition-all"
             >
               Admissions
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
