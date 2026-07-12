@@ -85,6 +85,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "saadhassan98971@gmail.com" },
+      { property: "og:title", content: "Naveed-e-Sahar School · Lalamusa" },
+      {
+        property: "og:description",
+        content:
+          "Empowering the next generation with knowledge, character, and 25+ years of trusted education in Lalamusa.",
+      },
+      { property: "og:image", content: "https://naveedesahar.online/nss-og.jpg" },
+      { property: "og:image:width", content: "1600" },
+      { property: "og:image:height", content: "1067" },
+      { property: "og:url", content: "https://naveedesahar.online" },
+      { name: "twitter:title", content: "Naveed-e-Sahar School · Lalamusa" },
+      {
+        name: "twitter:description",
+        content:
+          "Empowering the next generation with knowledge, character, and 25+ years of trusted education in Lalamusa.",
+      },
+      { name: "twitter:image", content: "https://naveedesahar.online/nss-og.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
