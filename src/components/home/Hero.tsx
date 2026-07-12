@@ -83,7 +83,7 @@ export function Hero() {
           <h1 className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-primary text-balance leading-[1.02]">
             Education is the{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-shimmer">Mother</span>
+              <span className="relative z-10 text-shimmer">Father</span>
               <span
                 aria-hidden
                 className="absolute inset-x-0 bottom-1 h-3 md:h-4 bg-gold/40 -z-0 rounded-sm"
